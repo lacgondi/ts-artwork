@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("err");
     } else {
       check = true;
+      document.getElementById("nameErr")!.style.color = "black";
     }
     if (
       !numberRegex.test(inputYear.value) ||
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("err");
     } else {
       check = true;
+      document.getElementById("yearErr")!.style.color = "black";
     }
     if (!numberRegex.test(inputPrice.value) || parseInt(inputPrice.value) < 1) {
       document.getElementById("priceErr")!.style.color = "red";
@@ -55,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("err");
     } else {
       check = true;
+      document.getElementById("priceErr")!.style.color = "black";
     }
     if (
       !numberRegex.test(inputHeight.value) ||
@@ -65,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("err");
     } else {
       check = true;
+      document.getElementById("heightErr")!.style.color = "black";
     }
 
     if (check) {
@@ -82,10 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
       inputYear.textContent = "";
       inputPrice.textContent = "";
       inputHeight.textContent = "";
-      document.getElementById("yearErr")!.style.color = "black";
-      document.getElementById("yearErr")!.style.color = "black";
-      document.getElementById("priceErr")!.style.color = "black";
-      document.getElementById("heightErr")!.style.color = "black";
     }
   });
 });
