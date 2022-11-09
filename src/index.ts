@@ -16,13 +16,13 @@ let artList: Artwork[] = [];
 let nameRegex = /[aA-zZ,]{1,}/;
 let numberRegex = /[1-9]{1,}/;
 
-function sum(){
-    let sumPrice = 0;
-    for(let a of artList){
-        sumPrice+=a.price;
-    }
-    document.getElementById('sumCount')!.textContent=artList.length+'';
-    document.getElementById('sumPrice')!.textContent=''+sumPrice;
+function sum() {
+  let sumPrice = 0;
+  for (let a of artList) {
+    sumPrice += a.price;
+  }
+  document.getElementById("sumCount")!.textContent = artList.length + "";
+  document.getElementById("sumPrice")!.textContent = "" + sumPrice;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -51,25 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
       check = true;
       document.getElementById("yearErr")!.style.color = "black";
     }
-    if (!numberRegex.test(inputPrice.value) || parseInt(inputPrice.value) < 1) {
+    if (parseInt(inputPrice.value) < 1 || !numberRegex.test(inputPrice.value)) {
       document.getElementById("priceErr")!.style.color = "red";
       check = false;
       console.log("err");
     } else {
       check = true;
       document.getElementById("priceErr")!.style.color = "black";
+      if (
+        !numberRegex.test(inputHeight.value) ||
+        parseInt(inputHeight.value) < 10
+      ) {
+        document.getElementById("heightErr")!.style.color = "red";
+        check = false;
+        console.log("err");
+      } else {
+        check = true;
+        document.getElementById("heightErr")!.style.color = "black";
+      }
     }
-    if (
-      !numberRegex.test(inputHeight.value) ||
-      parseInt(inputHeight.value) < 10
-    ) {
-      document.getElementById("heightErr")!.style.color = "red";
-      check = false;
-      console.log("err");
-    } else {
-      check = true;
-      document.getElementById("heightErr")!.style.color = "black";
-    }
+   
 
     if (check) {
       artList.push(
@@ -81,11 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
         )
       );
       sum();
-      console.log("success");
       inputName.textContent = "";
       inputYear.textContent = "";
       inputPrice.textContent = "";
       inputHeight.textContent = "";
+      alert('Szobor hozzáadva');
     }
   });
 });
