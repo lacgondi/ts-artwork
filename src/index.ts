@@ -12,9 +12,18 @@ class Statue implements Artwork {
   }
 }
 
-let artList: Artwork[];
+let artList: Artwork[] = [];
 let nameRegex = /[aA-zZ,]{1,}/;
 let numberRegex = /[1-9]{1,}/;
+
+function sum(){
+    let sumPrice = 0;
+    for(let a of artList){
+        sumPrice+=a.price;
+    }
+    document.getElementById('sumCount')!.textContent=artList.length+'';
+    document.getElementById('sumPrice')!.textContent=''+sumPrice;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   let inputName = document.getElementById("name") as HTMLInputElement;
@@ -67,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
           parseInt(inputHeight.value)
         )
       );
+      sum();
       console.log("success");
       inputName.textContent = "";
       inputYear.textContent = "";
